@@ -43,20 +43,20 @@ if selected == 'Diabetes Prediction':
 
     diab_diagnosis = ''
 
-    # Prediction button
+ 
     if st.button('Diabetes Test Result'):
         try:
-            # Convert user input values to float
+            
             user_input = [
                 float(Pregnancies), float(Glucose), float(BloodPressure),
                 float(SkinThickness), float(Insulin), float(BMI),
                 float(DiabetesPedigreeFunction), float(Age)
             ]
 
-            # Make prediction
+          
             diab_prediction = diabetes_model.predict([user_input])
 
-            # Display result
+         
             if diab_prediction[0] == 1:
                 diab_diagnosis = 'The Person is Diabetic'
             else:
@@ -121,17 +121,17 @@ if selected == 'Heart disease Prediction':
 if selected == 'Parkinsons Prediction':
     st.title('Parkinsons Prediction using ML')
 
-    # Input fields
+   
     col1, col2, col3 = st.columns(3)
 
     def get_float_input(label):
         """Safely gets a float input from user, handling empty or invalid values."""
         value = st.text_input(label).strip()
         try:
-            return float(value) if value else 0.0  # Convert to float, default 0.0
+            return float(value) if value else 0.0 
         except ValueError:
             st.error(f"Invalid input for {label}. Please enter a numerical value.")
-            return None  # Return None if invalid
+            return None  
 
     with col1:
         MDVP_Fo = get_float_input('MDVP:Fo(Hz)')
@@ -141,7 +141,7 @@ if selected == 'Parkinsons Prediction':
         NHR = get_float_input('NHR')
         RPDE = get_float_input('RPDE')
         spread1 = get_float_input('spread1')
-        missing_feature_1 = get_float_input('Missing Feature 1')  # Added
+        missing_feature_1 = get_float_input('Missing Feature 1')  
 
     with col2:
         MDVP_Fhi = get_float_input('MDVP:Fhi(Hz)')
@@ -151,7 +151,7 @@ if selected == 'Parkinsons Prediction':
         HNR = get_float_input('HNR')
         DFA = get_float_input('DFA')
         spread2 = get_float_input('spread2')
-        missing_feature_2 = get_float_input('Missing Feature 2')  # Added
+        missing_feature_2 = get_float_input('Missing Feature 2')  
 
     with col3:
         MDVP_Flo = get_float_input('MDVP:Flo(Hz)')
@@ -165,13 +165,13 @@ if selected == 'Parkinsons Prediction':
     parkinsons_diagnosis = ''
 
     if st.button('Parkinsons Test Result'):
-        # Check if any value is None (i.e., invalid input detected)
+        
         if None in [MDVP_Fo, MDVP_Fhi, MDVP_Flo, MDVP_Jitter, MDVP_Jitter_Abs, MDVP_RAP, Jitter_DDP,
                     MDVP_Shimmer, MDVP_Shimmer_dB, Shimmer_APQ3, Shimmer_APQ5, MDVP_APQ, Shimmer_DDA,
                     NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE, missing_feature_1, missing_feature_2]:
             st.error("Please fix all invalid inputs before proceeding.")
         else:
-            # Make prediction
+          
             user_input = [
                 MDVP_Fo, MDVP_Fhi, MDVP_Flo, MDVP_Jitter, MDVP_Jitter_Abs,
                 MDVP_RAP, Jitter_DDP, MDVP_Shimmer, MDVP_Shimmer_dB,
@@ -182,7 +182,7 @@ if selected == 'Parkinsons Prediction':
 
             parkinsons_prediction = parkinsons_model.predict([user_input])
 
-            # Display result
+    
             if parkinsons_prediction[0] == 1:
                 parkinsons_diagnosis = 'The Person is likely to have Parkinsons Disease'
             else:
