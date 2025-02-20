@@ -7,9 +7,9 @@ st.set_page_config(page_title="Prediction of Disease Outbreak",
                    layout="wide",
                    page_icon="👨‍⚕️")
 working_dir=os.path.dirname(os.path.abspath(__file__))
-diabetes_model=pickle.load(open("https://github.com/aakashtiru26/diseaseOutbreak/blob/main/diabetes_model.sav","rb"))
-heart_model=pic=pickle.load(open("https://github.com/aakashtiru26/diseaseOutbreak/blob/main/heart_model.sav","rb"))
-parkinsons_model=pickle.load(open("https://github.com/aakashtiru26/diseaseOutbreak/blob/main/parkinsons_model.sav","rb"))
+diabetes_model=pickle.load(open("diabetes_model.sav","rb"))
+heart_model=pic=pickle.load(open("heart_model.sav","rb"))
+parkinsons_model=pickle.load(open("parkinsons_model.sav","rb"))
 
 with st.sidebar:
     selected=option_menu("Prediction of Disease Outbreak",
